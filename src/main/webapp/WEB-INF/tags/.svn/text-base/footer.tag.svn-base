@@ -1,0 +1,5 @@
+<%@ tag language="java" pageEncoding="UTF-8"%>
+<div id="footer">
+	<div class="copyrightInfo">&copy;2012 华夏基金柜台销售系统</div>
+</div>
+

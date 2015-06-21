@@ -1,0 +1,300 @@
+html,iframe,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,code,del,dfn,em,img,q,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,dialog,figure,footer,header,hgroup,nav,section
+	{
+	margin: 0;
+	padding: 0;
+	border: 0 none;
+	vertical-align: baseline;
+	text-align: left;
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	font-style: inherit;
+}
+
+body {
+	font-family: 'sans-serif,arial';
+	font-size: 12px;
+	background-color: #FFFFFF;
+	width: 100%;
+	text-align: center;
+	color: #222222;
+	overflow: auto;
+}
+div.receipt{
+	height: 960px;
+	width: 622px;
+	margin: 0 auto;
+	padding-top: 16px;
+	text-align: center;
+	position: relative;
+}
+div.container {
+	height: 960px;
+	width: 622px;
+	margin: 0 auto;
+	padding-top: 1px;
+	text-align: center;
+	position: relative;
+	top: 5px;
+}
+
+.firstTitle {
+	margin-top: 20px;
+	float: right;
+	font-weight: bold;
+	font-size: 24px;
+	font-family: '雅黑';
+}
+
+div.printLeft {
+	height: 880px;
+	width: 600px;
+	margin: 0;
+	float: left;
+}
+
+div.printRight {
+	width: 20px;
+	margin-top: 150px;
+	float: right;
+}
+
+.verticalWord {
+	writing-mode: lr-tb;
+	padding-left: 8px;
+	height: 100px;
+}
+
+div.head {
+	margin-top: 10px;
+	margin-button: 10px;
+	font-size: 15px;
+}
+div.container div.head .head-row-height {
+	height: 25px;
+}
+
+div.head p label {
+	padding-right: 1.5px;
+}
+
+div.head  div.confirmTitle {
+	text-align: center;
+	margin: 10px 0 20px 0;
+	font-weight: bold;
+	font-size: 18px;
+	font-family: '楷体','楷体_GB2312';
+}
+
+div.receiptTitle {
+	text-align: center;
+	margin: 20px 0 10px 0;
+	font-weight: bold;
+	font-size: 22px;
+	font-family: '楷体','楷体_GB2312';
+}
+
+ div.content {
+	text-align: center;
+	margin: 0 auto;
+	margin-bottom: 8px;
+}
+
+div.content div.item {
+	width: 600px;
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 8px;
+	padding-bottom: 10px;
+	border: 1px solid black;
+}
+
+div.content div.title {
+	width: 540px;
+	height: 25px;
+	text-align: left;
+	margin: 0 30px;
+	padding-top: 10px;
+	padding-bottom: 7px;
+	font-weight: bold;
+	font-size: 18px;
+	font-family: '楷体','楷体_GB2312';
+}
+
+div.content div.item div.row {
+	width: 540px;
+	height: 100%;
+	margin: 0 30px;
+}
+
+div.content div.item div.columnOne {
+	width: 540px;
+	height: 100%;
+	float: left;
+	vertical-align: baseline;
+}
+
+ div.content div.item div.column {
+	width: 270px;
+	height: 100%;
+	float: left;
+	line-height: 18px;
+}
+
+div.content div.item div.column label,div.content div.item div.columnOne label
+	{
+	float: left;
+	line-height: 18px;
+}
+
+div.content div.item div.column div {
+	float: left;
+	line-height: 18px;
+}
+
+div.content div.item div.columnOne div {
+	float: left;
+	line-height: 18px;
+}
+
+div.foot {
+	width: 100%;
+}
+
+p {
+	height: 20px;
+}
+
+div.foot p.wordright {
+	text-align: right;
+	font-size: 16px;
+	font-family: '楷体','楷体_GB2312';
+}
+
+div.foot p.stamp {
+	text-align: right;
+	padding-right: 80px;
+	font-size: 15px;
+	font-family: '楷体','楷体_GB2312';
+}
+
+p.normal_row {
+	font-size: 12px;
+	font-family: '楷体','楷体_GB2312';
+}
+
+p.bottom_row {
+	height: 18px;
+	font-size: 12px;
+	font-family: '楷体','楷体_GB2312';
+}
+
+.smallword {
+	font-size: 12px;
+	font-family: '楷体','楷体_GB2312';
+}
+
+div.Info_change_type {
+	width: 100%;
+	height: 25px;
+	margin: 0 30px;
+}
+
+.superLong {
+	width: 100%;
+	height: auto;
+	margin: 0 30px;
+}
+
+div.empty_row {
+	height: 8px;
+}
+
+div.autoHeight {
+	clear: both;
+	display: block;
+}
+
+div.pageBottom {
+	position: absolute;
+	font-size: 12px;
+	font-family: '楷体','楷体_GB2312';
+	left: 0;
+	margin-bottom:10px;
+}
+
+a {
+	text-decoration: none;
+	height: 30px;
+	font-size: 24px;
+	color: black;
+	font-family: '楷体','楷体_GB2312';
+	line-height: 35px;
+	border-bottom: 0.5px solid gray;
+}
+
+.breakPage {
+	page-break-after: always;
+}
+.breakPageAuto {
+	page-break-after: auto;
+}
+
+.line_space {
+	display: inline-block;
+	width: 2px;
+}
+
+div.asign-container {
+	width: 540px;
+	margin: 0 30px;
+}
+
+div.asign-container .column-width {
+	width: 270px;
+}
+
+.logo {
+	margin-top: 20px;
+}
+
+
+/**客户须知**/
+div.r_title {
+	margin-top: 40px;
+	margin-bottom: 30px;
+	font-size: 20px;
+	font-family: '楷体','楷体_GB2312';
+	font-weight: bold;
+	text-align: center;
+}
+
+div.r_content {
+	
+}
+
+ol li {
+	font-size: 12px;
+	font-family: '楷体','楷体_GB2312';
+	line-height: 15px;
+	margin-bottom: 6px;
+	text-indent:30px;
+}
+
+div.r_content_title1 {
+	font-size: 12px;
+	font-family: '楷体','楷体_GB2312';
+	line-height: 15px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+div.r_content_title2 {
+	font-size: 12px;
+	font-family: '楷体','楷体_GB2312';
+	line-height: 15px;
+	margin-left: -15px;
+	margin-bottom: 10px;
+}
+.inputrowheight{height:30px;}
+.fontfamily{font-family: '新宋体';}

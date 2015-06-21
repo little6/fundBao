@@ -1,0 +1,7 @@
+<%@ tag language="java" body-content="scriptless" pageEncoding="UTF-8"%>
+
+	<div class="buttons">
+		<div class="wrap">
+		<jsp:doBody></jsp:doBody>
+		</div>
+	</div>

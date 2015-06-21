@@ -1,0 +1,16 @@
+<%@ tag language="java" body-content="scriptless" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
+
+<%@ attribute name="title" required="false" rtexprvalue="true"%>
+
+<c:if test="${empty MESSAGE && not empty WARNING}">
+	<div class="form"><div class="warning"><span>${WARNING}</span></div></div>
+</c:if>
+<c:if test="${not empty SUCCESS}">
+	<div class="form"><div class="success"><span>${SUCCESS}</span></div></div>
+</c:if>
+<c:if test="${not empty MESSAGE}">
+	<div class="form"><div class="message"><span>${MESSAGE}</span></div></div>
+</c:if>
+

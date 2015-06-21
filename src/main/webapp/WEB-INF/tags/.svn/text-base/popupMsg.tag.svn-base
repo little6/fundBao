@@ -1,0 +1,72 @@
+<%@ tag language="java" body-content="scriptless" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<!--  样式 -->
+<style type="text/css">
+	 #divMsg
+	 {
+	     width:380px;
+	     height:170px;
+	     line-height:10px;
+	     text-align:center;
+	     margin-left:40%;
+	     position:absolute;
+	     display:none;
+	     background-color:white;
+	     border:2px solid #d1c7b7;
+	     z-index:300;
+         *margin-left: 0;
+	 }
+	 .msgcontent{
+	 	margin-left:auto;
+	 	margin-right:auto;
+	 	text-align:center;
+	 	width:380px;
+	 	line-height:20px;
+	 	padding-top:40px;
+	 }
+	 .button{margin: 0 12px 0 12px; padding: 4px 16px 5px; border-radius: 2px; border: 0px none; background-color: #CC0000; color: white; font-size: 1em; cursor: pointer;}
+</style>
+<!-- 控制脚本 -->
+<script language="javascript">
+var PopupMsg = new Object();
+PopupMsg._url = "";
+PopupMsg.showMsg = function (url){
+ 	this._url = url;
+     var _divMsg=document.getElementById("divMsg");
+         _divMsg.style.display="block";
+ };
+PopupMsg.cancel = function (){
+ 	linkTo(this._url);
+ };
+PopupMsg.cancelCancel = function (){
+     var _divMsg=document.getElementById("divMsg");
+         _divMsg.style.display="none";
+         this._url='';
+ };
+ 
+$("a:contains('作废')").click(function(e) { 
+	var screenH = screen.height;//取得屏幕分辨率高度 
+	var yScroll;//取滚动条高度 
+	if (self.pageYOffset) { 
+		yScroll = self.pageYOffset; 
+	} else if (document.documentElement && document.documentElement.scrollTop){ 
+		yScroll = document.documentElement.scrollTop; 
+	} else if (document.body) {
+		yScroll = document.body.scrollTop; 
+	}
+    
+	$("#divMsg").css({position: "absolute",'top': (screenH/2 +　yScroll)-100 + 'px'}).show(); 
+}); 
+</script>
+     
+<!-- 消息div -->
+<div id="divMsg">
+	<div class="msgcontent">
+    	<font style="font-size:14px;"><b>确定要作废该单据吗?</b></font>
+    	<div style="margin-left:100px;margin-top:20px;">
+	        <button class="button" onclick="PopupMsg.cancel();">确定</button>
+	        <button class="button" onclick="PopupMsg.cancelCancel();">取消</button>
+        </div>
+     </div>
+</div>

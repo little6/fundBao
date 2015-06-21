@@ -1,0 +1,4 @@
+项目环境：
+JDK:jdk-7u79-windows-x64
+使用jdk8，运行测试的时候，spring加载配置文件总是报错，找不到对应的bean类
+相关解决方法在d:\exceptions\spring.txt中有解决

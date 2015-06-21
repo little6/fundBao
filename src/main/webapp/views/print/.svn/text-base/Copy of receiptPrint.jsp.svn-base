@@ -1,0 +1,63 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="print" tagdir="/WEB-INF/tags/print"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
+<c:set var="srcver" value="20121025" />
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+	<head>  
+	<title>${title}</title>  
+		<link rel="stylesheet" type="text/css" media="screen, print" href="${ctx}/style/print.css?${srcver}"/>
+		<link rel="stylesheet" type="text/css" media="print" href="${ctx}/style/print.css?${srcver}"/>
+	</head>  
+	<body> 
+			<c:set var="businessType" value="${account.businessTypeId}"></c:set>
+			<!--回执打印-->
+			<c:if test="${businessType == 'A201P'}">
+			    <!-- 个人开户 -->  
+				<c:set var="page" value="第一联公司留存"/>
+				<%@include file="/views/account/individualOpen/individualOpenReceipt.jsp"%>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<%@include file="/views/print/rule/individualCustomerRule.jsp"%>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<c:set var="page" value="第二联投资人留存"/>
+				<%@include file="/views/account/individualOpen/individualOpenReceipt.ftl"%>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<%@include file="/views/print/rule/individualCustomerRule.jsp"%>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			</c:if>
+			<c:if test="${businessType == 'A201I'}">
+				<!-- 机构开户 -->
+				<c:set var="page" value="第一联公司留存"/>
+				<%@include file="/views/account/institutionOpen/institutionOpenReceipt.ftl"%>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<%@include file="/views/print/rule/institutionOpenRule.jsp"%>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<c:set var="page" value="第二联投资人留存"/>
+				<%@include file="/views/account/institutionOpen/institutionOpenReceipt.ftl"%>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<%@include file="/views/print/rule/institutionOpenRule.jsp"%>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			</c:if>				    
+			<c:if test="${businessType == 'A204P'}">
+			    <!-- 个人资料修改 -->  
+				<c:set var="page" value="第一联公司留存"/>
+				<%@include file="/views/account/individualEdit/infoChangeReceipt.ftl"%>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<c:set var="page" value="第二联投资人留存"/>
+				<%@include file="/views/account/individualEdit/infoChangeReceipt.ftl"%>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			</c:if>
+			<c:if test="${businessType == 'A204I'}">
+				<!-- 机构资料修改 -->
+				<c:set var="page" value="第一联公司留存"/>
+				<%@include file="/views/account/institutionEdit/infoChangeReceipt.ftl"%>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<c:set var="page" value="第二联投资人留存"/>
+				<%@include file="/views/account/institutionEdit/infoChangeReceipt.ftl"%>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			</c:if>
+	</body>  
+</html> 
