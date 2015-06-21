@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<included>
+	<appender name="logfile_error"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<Prudent>true</Prudent>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>
+				logs/error/${HOSTNAME}.${APP_NAME}.%d{yyyy-MM-dd-HH}.error.log
+			</FileNamePattern>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>
+				<![CDATA[
+				%d{yyyy-MM-dd HH:mm:ss.SSS} %-4relative [%thread] %-5level %logger{36} - %msg %n
+				]]>
+			</Pattern>
+		</layout>
+	</appender>
+	<appender name="logfile_info"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>INFO</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<Prudent>true</Prudent>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>
+				logs/info/${HOSTNAME}.${APP_NAME}.%d{yyyy-MM-dd-HH}.info.log
+			</FileNamePattern>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>
+				<![CDATA[
+				%d{yyyy-MM-dd HH:mm:ss.SSS} %-4relative [%thread] %-5level %logger{36} - %msg %n
+				]]>
+			</Pattern>
+		</layout>
+	</appender>
+	<appender name="logfile_debug"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>DEBUG</level>
+		</filter>
+		<Prudent>true</Prudent>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>
+				logs/debug/${HOSTNAME}.${APP_NAME}.%d{yyyy-MM-dd-HH}.debug.log
+			</FileNamePattern>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>
+				<![CDATA[
+				%d{yyyy-MM-dd HH:mm:ss.SSS} %-4relative [%thread] %-5level %logger{36} - %msg %n
+				]]>
+			</Pattern>
+		</layout>
+	</appender>
+	<appender name="freemarker"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<Prudent>true</Prudent>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>
+				logs/nbis/${HOSTNAME}.${APP_NAME}.%d{yyyy-MM-dd-HH}.freemarker.log
+			</FileNamePattern>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>
+				<![CDATA[
+				%d{yyyy-MM-dd HH:mm:ss.SSS} %-4relative [%thread] %-5level %logger{36} - %msg %n
+				]]>
+			</Pattern>
+		</layout>
+	</appender>
+
+	<logger name="root" level="DEBUG">
+		<appender-ref ref="logfile_error" />
+	</logger>
+	<logger name="ds">
+		<appender-ref ref="logfile_debug" />
+		<appender-ref ref="logfile_info" />
+		<appender-ref ref="logfile_error" />
+	</logger>
+	<logger name="java.sql">
+		<appender-ref ref="logfile_debug" />
+		<appender-ref ref="logfile_info" />
+		<appender-ref ref="logfile_error" />
+	</logger>
+		<logger name="freemarker">
+		<appender-ref ref="freemarker" />
+	</logger>
+</included>

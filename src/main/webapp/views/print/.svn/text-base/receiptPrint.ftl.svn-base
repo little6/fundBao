@@ -1,0 +1,326 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+	<head>  
+	<title>${title}</title>  
+		<link rel="stylesheet" type="text/css" media="screen, print" href="${ctx}/static/style/print.css?${srcver}"/>
+		<link rel="stylesheet" type="text/css" media="print" href="${ctx}/static/style/print.css?${srcver}"/>
+		<#include "template/macro/printLayoutMacro.ftl">
+	</head>  
+	<body> 
+		<#list receiptList as view>
+			<#if singlePrint??>
+				
+			<#else>
+				<#assign businessType=view.businessTypeId />
+			</#if>
+
+			<!--回执打印-->
+			<#if businessType=="A201P">
+			    <#-- 个人开户 -->  
+				<#global page="第一联公司留存">
+				<#include "account/individualOpen/individualOpenReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#include "print/rule/individualCustomerRule.ftl"/>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#global page="第二联投资人留存">
+				<#include "account/individualOpen/individualOpenReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#include "print/rule/individualCustomerRule.ftl"/>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			<#elseif businessType=="A201I">
+				<#-- 机构开户 -->
+				<#global page="第一联公司留存">
+				<#include "account/institutionOpen/institutionOpenReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#include "print/rule/institutionOpenRule.ftl"/>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#global page="第二联投资人留存">
+				<#include "account/institutionOpen/institutionOpenReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#include "print/rule/institutionOpenRule.ftl"/>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			<#elseif businessType=="A202">
+				<#-- 交易账户销户-->
+			    <#global page="第一联公司留存">
+			    <#include "account/tradeAccountClose/tradeAccountCloseReceipt.ftl">
+			        <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			    <#global page="第二联投资人留存">
+			    <#include "account/tradeAccountClose/tradeAccountCloseReceipt.ftl">
+			        <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			<#elseif businessType=="A002">
+				<#-- 基金账户销户 -->  
+			    <#global page="第一联公司留存">
+			    <#include "account/taAccountClose/taAccountCloseReceipt.ftl">
+			        <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			    <#global page="第二联投资人留存">
+			    <#include "account/taAccountClose/taAccountCloseReceipt.ftl">
+			        <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			<#elseif businessType=="A220">
+				<#-- 三要素修改-->
+				<#global page="第一联公司留存">
+				<#include "account/identityEdit/identityEditReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#include "print/rule/infoChangeRule.ftl"/>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#global page="第二联投资人留存">
+				<#include "account/identityEdit/identityEditReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#include "print/rule/infoChangeRule.ftl"/>    
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			<#elseif businessType=="A204P">
+			    <#-- 个人资料修改 -->  
+				<#global page="第一联公司留存">
+				<#include "account/individualEdit/infoChangeReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#global page="第二联投资人留存">
+				<#include "account/individualEdit/infoChangeReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			<#elseif businessType=="A204I">
+				<#-- 机构资料修改 -->
+				<#global page="第一联公司留存">
+				<#include "account/institutionEdit/infoChangeReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#global page="第二联投资人留存">
+				<#include "account/institutionEdit/infoChangeReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			<#elseif businessType=="A222">
+				<#-- 开通柜台渠道-->
+				<#global page="第一联公司留存">
+				<#include "account/counterChannelOpen/counterChannelOpenReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#global page="第二联投资人留存">
+				<#include "account/counterChannelOpen/counterChannelOpenReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			<#elseif businessType=="A223">
+				<#-- 开通网上渠道-->
+				<#global page="第一联公司留存">
+				<#include "account/internetChannelOpen/internetChannelOpenReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#global page="第二联投资人留存">
+				<#include "account/internetChannelOpen/internetChannelOpenReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			<#elseif businessType=="A211C">
+				<#-- 柜台银行资料修改-->
+				<#global page="第一联公司留存">
+				<#include "account/currentAccountEdit/currentAccountEditReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#include "print/rule/infoChangeRule.ftl"/>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#global page="第二联投资人留存">
+				<#include "account/currentAccountEdit/currentAccountEditReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#include "print/rule/infoChangeRule.ftl"/>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			<#elseif businessType=="A211N">
+				<#-- 网上银行资料修改-->
+				<#global page="第一联公司留存">
+				<#include "account/currentAccountForNetEdit/currentAccountForNetEditReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#global page="第二联投资人留存">
+				<#include "account/currentAccountForNetEdit/currentAccountForNetEditReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			<#elseif businessType=="110">
+				<#-- 授权修改网上银行资料-->
+				<#global page="第一联公司留存">
+				<#include "account/authorityAccountEdit/authorityAccountEditReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#global page="第二联投资人留存">
+				<#include "account/authorityAccountEdit/authorityAccountEditReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			<#elseif businessType=='A001' || businessType=='A008'>
+				<#-- TA增开 -->
+				<#global page="第一联公司留存">
+				<#include "account/taAccountApply/taAccountApplyReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#global page="第二联投资人留存">
+				<#include "account/taAccountApply/taAccountApplyReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			<#elseif businessType=="A206">
+				<#-- 清空密码 -->
+				<#global page="第一联公司留存">
+				<#include "account/passwordReset/passwordResetReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#global page="第二联投资人留存">
+				<#include "account/passwordReset/passwordResetReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			<#elseif businessType=="A205">
+				<#-- 修改密码 -->
+			    <#global page="第一联公司留存">
+				<#include "account/passwordUpdate/passwordUpdateReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#global page="第二联投资人留存">
+				<#include "account/passwordUpdate/passwordUpdateReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			<#elseif businessType=="A207">
+				<#-- 解锁-->
+				<#global page="第一联公司留存">
+				<#include "account/unlock/tradeAccountUnlockReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#global page="第二联投资人留存">
+				<#include "account/unlock/tradeAccountUnlockReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			<#elseif businessType=="Q001">
+				<#-- 个人问卷 -->
+				<#global page="第一联公司留存">
+				<#include "account/questionnaire/individual/individualquestionnaireReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#global page="第二联投资人留存">
+				<#include "account/questionnaire/individual/individualquestionnaireReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			<#elseif businessType=="Q002">
+				<#-- 机构问卷 -->
+				<#global page="第一联公司留存">
+				<#include "account/questionnaire/institution/institutionquestionnaireReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#global page="第二联投资人留存">
+				<#include "account/questionnaire/institution/institutionquestionnaireReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				
+					
+					
+				
+				
+				
+				
+				
+				
+			<#elseif businessType=='T022' || businessType='T022X' >
+				<#-- 申购 -->
+				<#global page="第一联公司留存">
+				<#include "trade/buy/buyReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#include "print/rule/buyRule.ftl"/>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#global page="第二联投资人留存">
+				<#include "trade/buy/buyReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#include "print/rule/buyRule.ftl"/>
+				    <#if view_has_next><div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div></#if>
+			<#elseif businessType=='T020' || businessType=='T020X'>
+				<#global page="第一联公司留存">
+				<#include "trade/subscribe/subscribeReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#include "print/rule/subscribeRule.ftl"/>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#global page="第二联投资人留存">
+				<#include "trade/subscribe/subscribeReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#include "print/rule/subscribeRule.ftl"/>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			<#elseif businessType=='T022S'>
+				<#global page="第一联公司留存">
+				<#include "trade/specialbuy/specialBuyReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#include "print/rule/buyRule.ftl"/>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#global page="第二联投资人留存">
+				<#include "trade/specialbuy/specialBuyReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#include "print/rule/buyRule.ftl"/>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			<#elseif businessType=='T024'>
+				<#-- 基金赎回-->
+				<#global page="第一联公司留存">
+				<#include "trade/redeem/redeemReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#include "print/rule/redeemRule.ftl"/>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#global page="第二联投资人留存">
+				<#include "trade/redeem/redeemReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#include "print/rule/redeemRule.ftl"/>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			<#elseif businessType=='T024S'>
+				<#global page="第一联公司留存">
+				<#include "trade/specialredeem/specialredeemReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#include "print/rule/redeemRule.ftl"/>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#global page="第二联投资人留存">
+				<#include "trade/specialredeem/specialredeemReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#include "print/rule/redeemRule.ftl"/>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			<#elseif businessType=='T026' || businessType=='T226'>
+				<#global page="第一联公司留存">
+				<#include "trade/outtrustee/outTrusteeReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#include "print/rule/trusteeRule.ftl"/>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#global page="第二联投资人留存">
+				<#include "trade/outtrustee/outTrusteeReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#include "print/rule/trusteeRule.ftl"/>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			<#elseif businessType=='T027'>
+				<#global page="第一联公司留存">
+				<#include "trade/trusteein/trusteeInReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#include "print/rule/trusteeRule.ftl"/>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#global page="第二联投资人留存">
+				<#include "trade/trusteein/trusteeInReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#include "print/rule/trusteeRule.ftl"/>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			<#elseif businessType=='T028'>
+				<#global page="第一联公司留存">
+				<#include "trade/trusteeout/trusteeOutReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#include "print/rule/trusteeRule.ftl"/>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#global page="第二联投资人留存">
+				<#include "trade/trusteeout/trusteeOutReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#include "print/rule/trusteeRule.ftl"/>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			<#elseif businessType=='T028N' || businessType=='T026N' >
+				<#global page="第一联公司留存">
+				<#include "trade/specialtrusteeout/specialTrusteeOutReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#include "print/rule/trusteeRule.ftl"/>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#global page="第二联投资人留存">
+				<#include "trade/specialtrusteeout/specialTrusteeOutReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#include "print/rule/trusteeRule.ftl"/>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			<#elseif businessType=='T029'>
+				<#global page="第一联公司留存">
+				<#include "trade/dividend/dividendReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#global page="第二联投资人留存">
+				<#include "trade/dividend/dividendReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			<#elseif businessType=='T036'>
+				<#global page="第一联公司留存">
+				<#include "trade/convert/convertReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#include "print/rule/convertRule.ftl"/>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#global page="第二联投资人留存">
+				<#include "trade/convert/convertReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#include "print/rule/convertRule.ftl"/>
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			<#elseif businessType=='T200'>
+				<#global page="第一联公司留存">
+				<#include "trade/withdraw/withdrawReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#global page="第二联投资人留存">
+				<#include "trade/withdraw/withdrawReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			<#elseif businessType=='C201'>
+				<#-- 资金存入 -->
+				<#global page="第一联公司留存">
+				<#include "trade/capitaldeposit/capitalDepositReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+				<#global page="第二联投资人留存">
+				<#include "trade/capitaldeposit/capitalDepositReceipt.ftl">
+				    <div class="breakPage"><!--[if IE 7]><br style="height:0; line-height:0"><![endif]--></div>
+			</#if>
+
+
+		</#list>
+	</body>  
+</html> 

@@ -1,0 +1,19 @@
+<%@ tag language="java" body-content="scriptless" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%@ attribute name="action" required="false" rtexprvalue="true"%>
+<%@ attribute name="title" required="false" rtexprvalue="true"%>
+<%@ attribute name="method" required="false" rtexprvalue="true"%>
+<%@ attribute name="showTitle" required="false" rtexprvalue="true"%>
+
+<c:if test="${empty method}"><c:set var="method" value="post"></c:set></c:if>
+<c:if test="${empty showTitle}"><c:set var="showTitle" value="false"></c:set></c:if>
+
+<div class="form">
+	<c:if test="${'true' eq showTitle}">
+		<h2>${title}</h2>
+	</c:if>
+	<form action="${action}" method="${method}" id="form">
+	<jsp:doBody></jsp:doBody>
+	</form>
+</div>

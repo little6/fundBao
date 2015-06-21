@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.devMode" value="true"></constant>
+	<!-- action名称中允许有斜线 -->
+	<constant name="struts.enable.SlashesInActionNames" value="true"></constant>
+
+	<package name="fundDefaultPackage" extends="struts-default" abstract="true">
+		<interceptors>
+			<interceptor name="securityInterceptor" class="cn.itcast.util.ViewRenderInterceptor"></interceptor>
+			<interceptor-stack name="fundInterceptorStack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="securityInterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="fundInterceptorStack"/>
+		
+		<global-results>
+			<result name="login">/views/security/login.jsp</result>
+		</global-results>
+	</package>
+
+	<!-- 安全使用 	 -->
+	<include file="cn/itcast/security/struts.xml"></include>
+
+	 <!-- 以该文件做练习 -->
+	<include file="cn/itcast/account/struts.xml"></include>
+</struts>	

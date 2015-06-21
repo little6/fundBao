@@ -1,0 +1,18 @@
+<included>
+<!-- 
+	<appender name="logdb_parameter" class="ds.testaop.util.DSDBAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>DEBUG</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<connectionSource
+			class="ch.qos.logback.core.db.JNDIConnectionSource">
+			<param name="jndiLocation" value="${jndi.prefix}wls_log_ds" /> 
+		</connectionSource>
+	</appender>
+	<logger name="ds.testaop.recorder.ParameterRecorderService">
+		<appender-ref ref="logdb_parameter"/>
+	</logger>
+ -->
+</included>	

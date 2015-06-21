@@ -1,0 +1,37 @@
+<%@ tag language="java" body-content="scriptless" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib prefix="fund" tagdir="/WEB-INF/tags"%>
+
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
+
+<%@ attribute name="url" required="false" rtexprvalue="true"%>
+<%@ attribute name="title" required="false" rtexprvalue="true"%>
+<%@ attribute name="onclick" required="false" rtexprvalue="true"%>
+<%@ attribute name="target" required="false" rtexprvalue="true"%>
+
+<c:if test="${empty url}"><c:set var="linkUri" value="${ctx}"></c:set></c:if>
+<c:if test="${not empty url}"><c:set var="linkUri" value="${ctx}${url}"></c:set></c:if>
+<c:if test="${empty onclick}"><c:set var="onclick" value=""></c:set></c:if>
+<c:if test="${empty target}"><c:set var="target" value=""></c:set></c:if>
+
+<c:choose>
+	<c:when test="${''!=target}">
+		<c:set var="t" value="\"+${target}+\""></c:set>
+	</c:when>
+	<c:otherwise>
+		<c:set var="t" value=""></c:set>
+	</c:otherwise>
+</c:choose>
+<c:choose>
+	<c:when test="${!fn:startsWith(requestUri, linkUri) && hasSelected!='true'}">
+		<li class="selected">&gt;
+		<c:set var="hasSelected" value="true"></c:set>
+	</c:when>
+	<c:otherwise>
+		<li>&gt;
+	</c:otherwise>
+</c:choose>
+	
+	<a href="${linkUri}" title="${title}" ${t}>${title}</a>
+</li>

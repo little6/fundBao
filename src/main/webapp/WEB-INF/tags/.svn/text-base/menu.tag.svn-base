@@ -1,0 +1,98 @@
+<%@ tag language="java" body-content="scriptless" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fund" tagdir="/WEB-INF/tags"%>
+
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
+
+<script language="javascript">
+	$(function(){
+		$(".menu h3").each(function(i, e){
+			$(e).click(function(){
+				hideMenu();
+				$(this).next().show("fast");
+			});
+		});
+		hideMenu();
+		$(".menu ul li.selected").parent().show();
+	})
+	function hideMenu(){
+		$(".menu ul").each(function(i, e){
+			$(e).hide();
+		});
+		//$(".menu ul.fix").show();
+	}
+</script>
+<div class="menu">
+	<h3 class="quick-launch" ><A href="#"><span>快速通道</span></A></h3>
+	<ul class="fix">
+		<fund:menuitem url="/account/uncommitted/index" title="待提交单据" />
+		<fund:menuitem url="/account/individualOpen/index" title="个人账号开户登记" />
+		<fund:menuitem url="/trade/buy/index" title="基金申购" />
+		<fund:menuitem url="/trade/redeem/index" title="基金赎回" />
+		<fund:menuitem url="/trade/convert/index" title="基金转换" />
+		<fund:menuitem url="/capital/deposit/index" title="资金存入" />
+	</ul>
+	
+	<h3 class="account"><A href="#"><span>日常账户管理</span></a></h3>
+	<ul>
+		<fund:menuitem url="/account/individualOpen/index" title="个人账号开户登记" />
+		<fund:menuitem url="/account/institutionOpen/index" title="机构账号开户登记" />
+		<fund:menuitem url="/account/taAccountApply/index" title="增开其他TA基金账号" />
+        <fund:menuitem url="/account/identityEdit/index" title="客户身份信息修改" />
+		<fund:menuitem url="/account/individualEdit/index" title="个人资料修改" />
+		<fund:menuitem url="/account/institutionEdit/index" title="机构资料修改" />
+        <fund:menuitem url="/account/currentAccountEdit/index" title="柜台银行资料修改" />
+        <fund:menuitem url="/account/currentAccountForNetEdit/index" title="网上银行资料修改"/>
+        <fund:menuitem url="/account/authorityAccountEdit/index" title="授权修改网上银行资料" />
+        <fund:menuitem url="/account/counterChannelOpen/index" title="开通柜台交易方式" />
+		<fund:menuitem url="/account/internetChannelOpen/index" title="开通网上交易方式" />
+        <fund:menuitem url="/account/tradeAccountClose/index" title="交易账户销户" />
+        <fund:menuitem url="/account/taAccountClose/index" title="基金账户销户" />        
+		<fund:menuitem url="/account/questionnaire/individualQuestionnaire/index" title="个人问卷调查" />
+		<fund:menuitem url="/account/questionnaire/institutionQuestionnaire/index" title="机构问卷调查" />
+	</ul>
+	
+	<h3 class="special-account"><A href="#"><span>特殊账户管理</span></a></h3>
+	<ul>
+		<fund:menuitem url="/account/passwordReset/index" title="交易密码清密" />
+		<fund:menuitem url="/account/passwordUpdate/index" title="交易密码修改" />
+		<fund:menuitem url="/account/unlock/index" title="交易账号解锁" />
+	</ul>
+	
+	<h3 class="trade"><A href="#"><span>日常交易</span></a></h3>
+	<ul>
+		<fund:menuitem url="/trade/buy/index" title="基金申购" />
+		<fund:menuitem url="/trade/subscribe/index" title="基金认购" />
+		<fund:menuitem url="/trade/redeem/index" title="基金赎回" />
+		<fund:menuitem url="/capital/deposit/index" title="资金存入" />
+		<fund:menuitem url="/trade/specialRedeem/index" title="基金指定赎回" />
+		<fund:menuitem url="/trade/convert/index" title="基金转换" />
+	</ul>
+
+	<h3 class="special-trade"><A href="#"><span>特殊交易</span></a></h3>
+	<ul>
+		<fund:menuitem url="/trade/trusteeIn/index" title="转托管入" />
+		<fund:menuitem url="/trade/outTrustee/index" title="外部转托管" />
+		<fund:menuitem url="/trade/trusteeOut/index" title="转托管出" />
+		<fund:menuitem url="/trade/specialTrusteeOut/index" title="指定渠道转托管出" />
+		<fund:menuitem url="/trade/dividend/index" title="设置分红方式" />
+		<fund:menuitem url="/trade/withdraw/index" title="撤消交易类申请" />
+		<fund:menuitem url="/trade/institutionUnopenTrade/index" title="机构三要素认申购" />
+	</ul>
+
+	<h3 class="print"><A href="#"><span>打印管理</span></a></h3>
+	<ul>
+		<fund:menuitem url="/print/receiptLetter/index" title="补打凭证" />
+		<fund:menuitem url="/print/batchConfirm/index" title="确认单打印" />
+		<fund:menuitem url="/print/dailyCheck/index" title="日结" />
+		<fund:menuitem url="/print/generateData/index" title="生成确认数据" />
+		<li>&gt;
+			<a href="${ctx}/static/image/rule.pdf" title="客户须知打印" target=_blank>客户须知打印</a>
+		</li>
+	</ul>
+	
+	<h3 class="system"><A href="#"><span>系统功能</span></a></h3>
+	<ul>
+		<fund:menuitem url="/logout" title="注销用户" />
+	</ul>
+</div>
